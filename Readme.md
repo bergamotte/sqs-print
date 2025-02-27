@@ -1,4 +1,4 @@
-# Mac SQS Printer
+# SQS Print
 
 This Ruby library project is designed to:
 - Use the `cupsffi` gem to send a file to print.
@@ -17,7 +17,7 @@ This Ruby library project is designed to:
 
 To start listening to the SQS queue and printing messages, run:
 ```sh
-shoryuken -r ./lib/mac_sqs/worker.rb -C ./config/shoryuken.yml
+shoryuken -r ./lib/sqs_print/worker.rb -C ./config/shoryuken.yml
 ```
 
 To print a file directly using the `print_file` script, run:
