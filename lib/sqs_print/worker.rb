@@ -5,7 +5,7 @@ require 'json'
 class SqsPrintWorker
   include Shoryuken::Worker
 
-  shoryuken_options queue: 'sqs-print.fifo', auto_delete: true
+  shoryuken_options queue: 'sqs-print', auto_delete: true
 
   def perform(sqs_msg, body)
     puts "Received message: #{body}"
