@@ -1,23 +1,19 @@
 require 'shoryuken'
-require 'cupsffi'
 require 'json'
+require 'open3'
+require_relative 'printer'
 
-class SqsPrintWorker
-  include Shoryuken::Worker
-
-  shoryuken_options queue: 'sqs-print', auto_delete: true
-
-  def perform(sqs_msg, body)
-    puts "Received message: #{body}"
-    message = JSON.parse(body)
-    file_path = message['file_path']
-    printer_name = message['printer_name']
-    print_file(file_path, printer_name)
-  end
-
-  private
-
-  def print_file(file_path, printer_name)
-    CupsPrinter.new(printer_name).print_file(file_path)
+module SqsPrint
+  class Worker
+    include Shoryuken::Worker
+  
+    shoryuken_options queue: 'sqs-print', auto_delete: true
+  
+    def perform(sqs_msg, body)
+      puts "Received message: #{body}"
+      message = JSON.parse(body)
+      printer = Printer.new
+      printer.print_from_capture(message['title'], message['subtitle'], message['printer_name'], 'https://wcs.bergamotte.com/packager/sticker_printer')
+    end
   end
 end

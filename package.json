@@ -1,0 +1,14 @@
+{
+  "name": "sqs_printer",
+  "version": "1.0.0",
+  "description": "A project to capture screenshots using Puppeteer",
+  "main": "screen_capture.js",
+  "scripts": {
+    "capture": "node screen_capture.js"
+  },
+  "dependencies": {
+    "puppeteer": "24.3.0"
+  },
+  "author": "",
+  "license": "MIT"
+}

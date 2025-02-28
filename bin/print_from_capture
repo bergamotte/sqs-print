@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/sqs_print'
+
+if ARGV.length < 3 || ARGV.length > 4
+  puts "Usage: #{$0} <title> <subtitle> <printer_name> [rendering_url]"
+  exit 1
+end
+
+title = ARGV[0]
+subtitle = ARGV[1]
+printer_name = ARGV[2]
+rendering_url = ARGV[3] || 'https://wcs.bergamotte.com/packager/sticker_printer'
+
+printer = SqsPrint::Printer.new
+printer.print_from_capture(title, subtitle, printer_name, rendering_url)

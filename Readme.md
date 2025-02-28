@@ -24,3 +24,11 @@ To print a file directly using the `print_file` script, run:
 ```sh
 ./bin/print_file <file_path> <printer_name>
 ```
+
+## NOTE on docker usage:
+If accessing a server running locally on another devcontainer, you might need to edit /etc/hosts to make the dns resolve to the right ip:
+
+```
+# /etc/hosts
+<your host ip> wcs.dev-bergamotte.fr
+```
