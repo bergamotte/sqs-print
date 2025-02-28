@@ -1,0 +1,44 @@
+
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore other unimportant files
+*.rbc
+capybara-*.html
+.rspec
+/.yardoc
+/_yardoc/
+/coverage/
+/spec/tmp
+**.orig
+rerun.txt
+pickle-email-*.html
+
+# Ignore node_modules
+node_modules/
+
+# Ignore npm debug log
+npm-debug.log
+
+# Ignore yarn lock file
+yarn.lock
+
+# Ignore dotenv environment variables file
+.env
+
+# Ignore byebug command history file.
+.byebug_history
+
+# Ignore captures folder contents except .keep file
+captures/*
+!captures/.keep
