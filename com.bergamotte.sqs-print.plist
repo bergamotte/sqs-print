@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.bergamotte.sqs-print</string>
+    <!-- Set the working directory to your project folder -->
+    <key>WorkingDirectory</key>
+    <string>/Users/ruben/projects/bergamotte/sqs-print</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>bundle</string>
+      <string>exec</string>
+      <string>shoryuken</string>
+      <string>-r</string>
+      <string>./lib/sqs_print/worker.rb</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+  </dict>
+</plist>
+

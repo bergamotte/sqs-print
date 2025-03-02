@@ -10,28 +10,40 @@ const path = require('path');
     }
 
     // Generate a file name using the current timestamp.
-    const fileName = `captures/${new Date().toISOString().replace(/[:.]/g, '-')}.jpeg`;
+    const fileName = `captures/${new Date().toISOString().replace(/[:.]/g, '-')}.jpg`;
 
     // Construct the file path relative to the project root location.
     const filePath = path.join(__dirname, fileName);
 
-    console.log(`File path generated: ${filePath}`); // Added log
-
     // Launch a headless Chrome instance.
     const browser = await puppeteer.launch({
-      executablePath: '/usr/bin/google-chrome-stable', 
+//      executablePath: '/usr/bin/google-chrome-stable', 
       headless: true,
       args: ['--ignore-certificate-errors', '--no-sandbox', '--disable-setuid-sandbox']
     });
     console.log('Browser launched'); // Added log
     const page = await browser.newPage();
+    await page.setViewport({
+      width: 800,
+      height: 600,
+      deviceScaleFactor: 2 // Increase to 2 or 3 for higher DPI
+    });
+
 
     // Navigate to the desired URL.
     await page.goto(url, { waitUntil: 'networkidle2' });
     console.log(`Navigated to URL: ${url}`); // Added log
 
     const element = await page.$('.frame');
-    await element.screenshot({ path: filePath });
+    // await element.screenshot({ path: filePath, type: 'jpeg', quality: 100});
+
+    await page.pdf({
+      path: `${filePath}.pdf`,
+      format: 'A6',
+      landscape: true,
+      printBackground: true,
+      preferCSSPageSize: true
+    });
 
     console.log(`Screenshot saved as ${filePath}`);
 
