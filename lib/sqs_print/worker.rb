@@ -1,6 +1,5 @@
 require 'shoryuken'
 require 'json'
-require 'open3'
 require_relative 'printer'
 
 module SqsPrint
@@ -13,7 +12,7 @@ module SqsPrint
       puts "Received message: #{body}"
       message = JSON.parse(body)
       printer = Printer.new
-      printer.print_from_capture(message['title'], message['subtitle'], message['printer_name'], 'https://wcs.bergamotte.com/packager/sticker_printer')
+      printer.print_from_capture(message['title'], message['subtitle'], message['printer_name'], message['url'] || 'https://wcs.bergamotte.com/packager/sticker_printer')
     end
   end
 end
